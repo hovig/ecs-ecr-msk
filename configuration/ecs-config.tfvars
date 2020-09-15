@@ -1,5 +1,5 @@
-ecs_key_name = "<SET EC2 KEY NAME HERE>" # e.g: my_ec2_key
-ecs_image_id = "<SET AMI HERE>"           
+ecs_key_name = "kafka_key_pair"
+ecs_image_id = "ami-02f5ea673e84393c9"    
 /*
     e.g: ami-0112bb4988eedc594
     Can be found at https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
@@ -16,7 +16,6 @@ image_kafka_schema_registry_ui = "landoop/schema-registry-ui:0.9.4"
 image_kafka_connect            = "debezium/connect:0.9"
 image_kafka_connect_ui         = "landoop/kafka-connect-ui"
 image_kafka_rest_api           = "confluentinc/cp-kafka-rest:latest"
-image_kafka_ksql               = "confluentinc/cp-ksql-server:5.3.1"
 
 ecs_container_kafka_schema_registry_port = 8081
 ecs_host_kafka_schema_registry_port      = 8081
@@ -36,5 +35,3 @@ ecs_alb_kafka_rest_api_port       = 9002
 ecs_container_kafka_rest_api_port = 8082
 ecs_host_kafka_rest_api_port      = 8082
 
-ecs_container_kafka_ksql_port = 8088
-ecs_host_kafka_ksql_port      = 8088

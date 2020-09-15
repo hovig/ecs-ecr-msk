@@ -83,22 +83,3 @@ resource "aws_ecs_service" "eem-ecs-kafka-rest-api" {
   }
 }
 
-resource "aws_ecs_service" "eem-kafka-ksql" {
-  cluster                            = aws_ecs_cluster.eem-ecs.id
-  desired_count                      = 1
-  launch_type                        = "EC2"
-  name                               = "eem-kafka-ksql"
-  scheduling_strategy                = "REPLICA"
-  task_definition                    = aws_ecs_task_definition.eem-kafka-ksql.arn
-
-  service_registries {
-    registry_arn   = aws_service_discovery_service.eem-kafka-ksql.arn
-    container_name = "eem-kafka-ksql"
-  }
-
-  network_configuration {
-    subnets          = var.subnet_ids
-    assign_public_ip = false
-    security_groups  = [aws_security_group.eem-ecs.id]
-  }
-}

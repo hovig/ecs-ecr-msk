@@ -31,16 +31,3 @@ resource "aws_service_discovery_service" "eem-kafka-connect" {
   }
 }
 
-resource "aws_service_discovery_service" "eem-kafka-ksql" {
-  name = "eem-kafka-ksql"
-  dns_config {
-    namespace_id = aws_service_discovery_private_dns_namespace.eem-service-discovery.id
-    dns_records {
-      ttl  = 10
-      type = "A"
-    }
-  }
-  health_check_custom_config {
-    failure_threshold = 1
-  }
-}
